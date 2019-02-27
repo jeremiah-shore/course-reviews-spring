@@ -1,16 +1,24 @@
 package net.jeremiahshore.course;
 
 import net.jeremiahshore.core.BaseEntity;
+import net.jeremiahshore.review.Review;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Course extends BaseEntity {
     private String title;
     private String url;
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private List<Review> reviews;
 
     protected Course() {
         super();
+        reviews = new ArrayList<>();
     }
 
     public Course(String title, String url) {
@@ -33,5 +41,14 @@ public class Course extends BaseEntity {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void addReview(Review review) {
+        review.setCourse(this);
+        reviews.add(review);
     }
 }
