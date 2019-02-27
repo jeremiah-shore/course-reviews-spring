@@ -1,21 +1,16 @@
 package net.jeremiahshore.review;
 
+import net.jeremiahshore.core.BaseEntity;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
-public class Review {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private final Long id;
+public class Review extends BaseEntity {
     private int rating;
     private String description;
 
-    //todo: reduce duplicated code for entities
-    public Review() {
-        id = null;
+    protected Review() {
+        super();
     }
 
     public int getRating() {
