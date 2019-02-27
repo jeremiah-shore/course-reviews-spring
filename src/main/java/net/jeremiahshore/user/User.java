@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 
 @Entity
 public class User extends BaseEntity {
-    private static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
+    public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
     private String firstName;
     private String lastName;
     private String username;
@@ -22,7 +22,7 @@ public class User extends BaseEntity {
         super();
     }
 
-    public User(String firstName, String lastName, String username, String password, String[] roles) {
+    public User(String username, String firstName, String lastName, String password, String[] roles) {
         this();
         this.firstName = firstName;
         this.lastName = lastName;

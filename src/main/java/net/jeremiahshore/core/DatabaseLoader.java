@@ -30,10 +30,10 @@ public class DatabaseLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        seedSingleCourseData();
-        seedBulkCourseData();
         seedSingleUserData();
         seedBulkUserData();
+        seedSingleCourseData();
+        seedBulkCourseData();
     }
 
     private void seedSingleCourseData() {
